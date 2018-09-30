@@ -1,6 +1,6 @@
 # algorithm-test-usage
 
-algorithm-testを使ってみるサンプル
+[algorithm-test](https://github.com/yosupo06/algorithm-test)を使ってみるサンプル
 
 ```
 src/

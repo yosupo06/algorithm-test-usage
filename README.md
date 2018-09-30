@@ -15,7 +15,7 @@ test/
 ### 準備
 
 ```
-git submodule --init --recursive
+git submodule update --init --recursive
 ```
 
 `--recursive`ないと動かないので注意

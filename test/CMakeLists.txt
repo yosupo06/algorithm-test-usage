@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
 
+# -std=c++11
 set(CMAKE_CXX_STANDARD 11)
 
+# gtest / algorithm-testを使えるように
 include(GoogleTest)
 add_subdirectory(algorithm-test)
-#include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+# ../srcをincludeできるように
 include_directories(../src)
-include_directories(.)
+
+# ctestをenable
 enable_testing()
 
+# lca_test.cppをテスト対象に
 add_executable(LCATest lca_test.cpp)
 target_link_libraries(LCATest gtest gtest_main)
 gtest_discover_tests(LCATest)

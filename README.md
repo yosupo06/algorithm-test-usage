@@ -1,9 +1,10 @@
 # algorithm-test-usage
 
 [algorithm-test](https://github.com/yosupo06/algorithm-test)を使ってみるサンプル
+このリポジトリの内容はユーザーが準備するという想定
 
 ```
-src/
+src/ ライブラリ本体たち
     base.h : 基本のやつ(#include <bits/stdc++.h>とか)
     lca.h : lcaのライブラリが入っている
 test/

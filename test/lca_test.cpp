@@ -6,21 +6,20 @@
 
 // ユーザーはLCAをTestするためのインターフェースとなるクラスを定義する
 // Testerクラスの雛形もalgorithm-testに入れて継承するようにしてもいいかも？
-struct LCATester {
+struct LCATester : public LCATesterBase {
     LCA lca;
 
     /*
      * setup関数はvector<vector<struct E { int to; }>>とroot vertexを引数にとり、色々準備する
      */
-    template<class E>
-    void setup(VV<E> g, int r) {
+    void setup(VV<LCAEdge> g, int r) final {
         lca = get_lca(g, r);
     }
 
     /*
      * query関数はu, vが与えられるので、lcaを返す
      */
-    int query(int u, int v) {
+    int query(int u, int v) final {
         return lca.query(u, v);
     }
 };
@@ -28,7 +27,7 @@ struct LCATester {
 /*
  * 愚直LCAのテストとかも書ける
  */
-struct LCANaiveTester {
+struct LCANaiveTester : public LCATesterBase {
     VV<int> g;
     V<int> depth, par;
 
@@ -41,8 +40,7 @@ struct LCANaiveTester {
         }
     }
 
-    template<class E>
-    void setup(VV<E> _g, int r) {
+    void setup(VV<LCAEdge> _g, int r) final {
         int n = int(_g.size());
         g = VV<int>(n);
         for (int i = 0; i < n; i++) {
@@ -55,7 +53,7 @@ struct LCANaiveTester {
         dfs(r, -1);
     }
 
-    int query(int u, int v) {
+    int query(int u, int v) final {
         while (u != v) {
             if (depth[u] < depth[v]) swap(u, v);
             u = par[u];

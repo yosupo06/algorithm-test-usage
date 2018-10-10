@@ -1,8 +1,10 @@
 #include "gtest/gtest.h" // なにはともあれgoogletestをincludeする
-#include "algorithm-test/lca_test.h" // algorithm-testのなかから使いたいテストを
+#include "algorithm-test/tree/lca_test.h" // algorithm-testのなかから使いたいテストを
 
-#include "base.h" // 基本ライブラリ(ユーザーの)
-#include "lca.h" // LCAライブラリ(ユーザーの)
+using namespace algotest;
+
+#include "base.h"
+#include "lca.h"
 
 // ユーザーはLCAをTestするためのインターフェースとなるクラスを定義する
 // Testerクラスの雛形もalgorithm-testに入れて継承するようにしてもいいかも？
@@ -25,7 +27,7 @@ struct LCATester : public LCATesterBase {
 };
 
 /*
- * 愚直LCAのテストとかも書ける
+ * 愚直LCAのテスト
  */
 struct LCANaiveTester : public LCATesterBase {
     VV<int> g;

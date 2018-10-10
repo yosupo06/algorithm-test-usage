@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
 
 using namespace std;
 using uint = unsigned int;

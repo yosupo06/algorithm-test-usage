@@ -8,7 +8,7 @@ using namespace algotest;
 
 struct PrimeTester : public PrimeTesterBase {
     bool is_prime(ll x) final {
-        EXPECT_LE(x, ll(1e12)) << "x = " << x << " is too big, is_prime work with O(sqrt(x))";
+        assert(x <= 1e12);
         return ::is_prime(x);
     }
     vector<ll> factor(ll x) final {

@@ -16,7 +16,12 @@ include_directories(../src)
 # ctestをenable
 enable_testing()
 
-# lca_test.cppをテスト対象に
-add_executable(LCATest lca_test.cpp)
-target_link_libraries(LCATest gtest gtest_main)
-gtest_discover_tests(LCATest)
+# fenwick_test.cppをテスト対象に
+add_executable(FenwickTest fenwick_test.cpp)
+target_link_libraries(FenwickTest gtest gtest_main)
+gtest_discover_tests(FenwickTest)
+
+# prime_test.cppをテスト対象に
+add_executable(PrimeTest prime_test.cpp)
+target_link_libraries(PrimeTest gtest gtest_main)
+gtest_discover_tests(PrimeTest PROPERTIES TIMEOUT 2)

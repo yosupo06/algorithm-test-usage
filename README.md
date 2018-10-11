@@ -6,10 +6,12 @@
 ```
 src/ ライブラリ本体たち
     base.h : 基本のやつ(#include <bits/stdc++.h>とか)
-    lca.h : lcaのライブラリが入っている
+    fenwick.h : fenwick treeのライブラリが入っている
+    prime.h : is_prime(素数判定)とfactor(素因数分解)が入っている
 test/
     algorithm-test : algorithm-test(submodule)
-    lca_test.cpp : lcaをテストするソースコード
+    fenwick_test.cpp : fenwick treeをテストするソースコード
+    prime_test.cpp : is_prime / factorをテストするソースコード
     CMakeLists.txt : cmakeのコンフィグファイル, おまじないのかたまり
 ```
 

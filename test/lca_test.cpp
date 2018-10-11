@@ -1,5 +1,5 @@
 #include "gtest/gtest.h" // なにはともあれgoogletestをincludeする
-#include "algorithm-test/tree/lca_test.h" // algorithm-testのなかから使いたいテストを
+#include "algotest/tree/lca_test.h" // algorithm-testのなかから使いたいテストを
 
 using namespace algotest;
 

@@ -3,9 +3,12 @@ cmake_minimum_required(VERSION 3.10)
 # -std=c++11
 set(CMAKE_CXX_STANDARD 11)
 
-# gtest / algorithm-testを使えるように
+# gtest_discover_testsを使えるように
 include(GoogleTest)
+
+# algorithm-testを使えるように
 add_subdirectory(algorithm-test)
+include_directories(algorithm-test)
 
 # ../srcをincludeできるように
 include_directories(../src)

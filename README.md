@@ -34,9 +34,14 @@ make
 ctest # ctestが走る
 ```
 
-### チュートリアル
+詳しいログを出したい場合
 
-上記のテストの仕方に従いテストを走らすと、以下のような出力が出てくる(はず)
+```
+export GTEST_COLOR=1 # 無くても良いが、ログに色がつく
+ctest -VV
+```
+
+ちなみにこのリポジトリのテスト走らすと、以下のような出力が出てくる(はず)
 
 ```
 Test project /home/yosupo/Documents/algorithm-test-usage/test/build
@@ -62,15 +67,9 @@ The following tests FAILED:
 Errors while running CTest
 ```
 
-2, 4, 5番でテストが落ちていることがわかる。4, 5番で落ちるのは実は想定通りだが、2番で落ちるのは想定外(という設定)である。なので
+2番はWAのサンプルで4, 5はTLEを回避するためのサンプルです。
 
-```
-export GTEST_COLOR=1 # 無くても良いが、ログに色がつく
-ctest -VV
-```
-
-を実行することにより、もっと詳しくログを出す。
-赤文字でFAILEDと書いてあるところの周りを見れば、
+詳しくログを出して，赤文字でFAILEDと書いてあるところの周りを見れば、
 
 ```
 2: /home/yosupo/Documents/algorithm-test-usage/test/algorithm-test/algotest/math/prime_test.h:42: Failure
@@ -78,10 +77,8 @@ ctest -VV
 2:   Actual: true
 2: Expected: false
 ```
+という出力が発見できて，is_primeのバグはis_prime(1)がtrueを返すことだとわかる。
 
-なるログを発見することができ、is_primeのバグはis_prime(1)がtrueを返すことだとわかる。
+4番と5番が失敗しているのは意図的なもので,O(sqrt)で動くアルゴリズムに10^18オーダーの値を入力するとすごい時間がかかるから打ち切っている。
 
-4番と5番が失敗しているのは意図的なものである。
-今回のprime_test.cppでは、O(sqrt)で動くアルゴリズムのテストを行おうとしているが、実はこのテストは10^18オーダーの値も入力する(本来はミラーラビン法やポラードロー法のテストを想定している)。
-これを打ち切らないと非常に長い時間がかかってしまう(と言っても十数秒だが)。打ち切りには色々方法はあると思うが、4番ではassertで強制終了していて、5番では明示的に打ち切ることはせずTimeoutまでぶん回している。
-Time Limitはtest/CMakeLists.txtで明示的に指定している。指定しないとINF(10000000)秒になる。
+4番ではassertで強制終了していて、5番では明示的に打ち切ることはせずTimeoutまでぶん回している(test/CMakeLists.txtで指定可能，指定しないとTimeoutなし)。
